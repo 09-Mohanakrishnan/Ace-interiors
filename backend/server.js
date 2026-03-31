@@ -1,5 +1,17 @@
 const express = require('express');
 const path = require('path');
+const fs = require('fs');
+
+// GLOBAL CRASH CATCHERS - Critical for seeing errors in Hostinger Logs
+process.on('uncaughtException', (err) => {
+  console.error('🔥 UNCAUGHT EXCEPTION:', err.message);
+  console.error(err.stack);
+});
+
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('🔥 UNHANDLED REJECTION:', reason);
+});
+
 const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
@@ -8,6 +20,16 @@ const cookieParser = require('cookie-parser');
 const Admin = require('./models/Admin');
 
 dotenv.config();
+
+// STARTUP DIAGNOSTICS
+console.log('📂 Current Working Directory:', process.cwd());
+console.log('📂 __dirname:', __dirname);
+const distPath = path.join(__dirname, '../frontend/dist');
+if (fs.existsSync(distPath)) {
+  console.log('✅ Frontend Build directory found at:', distPath);
+} else {
+  console.log('❌ Frontend Build directory NOT FOUND at:', distPath);
+}
 
 const app = express();
 
@@ -267,6 +289,6 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
 });
 
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on http://localhost:${PORT}`);
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`🚀 Server running on http://0.0.0.0:${PORT}`);
 });
