@@ -1,0 +1,337 @@
+{
+  "hero": {
+    "title": ["Top Interior Designers in chennai", "ACE INTERIORS"],
+    "subtitle": "Transform your living space with the best interior decorators in Chennai. We offer premium modular kitchens, luxury wardrobes, and full home interiors with a 10-year warranty.",
+    "backgroundImage": "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=2000",
+    "trustBadge": "Chennai's Most Trusted Interior Brand",
+    "stats": [
+      { "label": "10 Year Warranty", "value": "10Y" },
+      { "label": "45 Day Delivery", "value": "45D" },
+      { "label": "20,000+ Homes", "value": "20K" }
+    ]
+  },
+  "offerings": {
+    "title": "Our Premium Interior Services",
+    "description": "From top-rated modular kitchens to luxury full home renovations in Tamil Nadu, we bring your vision to life.",
+    "items": [
+      {
+        "id": "modular-kitchens",
+        "title": "Modular Kitchens",
+        "image": "/images/modular-kitchen.jpg",
+        "description": "Smart, space-saving layouts with high-quality BWP materials and German hardware.",
+        "href": "/offering/modular-kitchens",
+        "detailedDescription": "Transform your cooking space with the top-rated modular kitchen designers in Chennai. Our kitchens are built with 100% BWP Plywood cores, premium German hardware from Hettich and Hafele, and finished with high-gloss acrylic or PU-coated surfaces for a lifetime of elegance and durability. We focus on the Work Triangle — optimizing the distance between your sink, stove, and refrigerator — to ensure every kitchen is as efficient as it is beautiful.",
+        "features": "100% BWP Plywood Core,Hettich/Hafele German Hardware,High-Gloss Acrylic Finish,Quartz/Granite Countertops,Soft-Close Mechanisms,Customized Tall Units & Pull-Outs,LED Under-Cabinet Lighting,10-Year Warranty",
+        "galleryImages": "/images/modular-kitchen.jpg,https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&q=80&w=800,https://images.unsplash.com/photo-1556912173-3bb406ef7e77?auto=format&fit=crop&q=80&w=800",
+        "faqs": "How long does a kitchen installation take?|Typically 35-45 days from design finalization to handover.,What materials do you use for kitchen carcasses?|We exclusively use marine-grade BWP (Boiling Water Proof) plywood for all carcasses ensuring maximum moisture resistance.,Do you offer L-shaped U-shaped and Island kitchens?|Yes we design all popular layouts — L-shaped U-shaped Parallel Straight and Island kitchens — customized to your space.,What is included in the price?|Our quotes include design consultation 3D visualization material procurement fabrication delivery and installation.",
+        "heroTitle": "Premium Modular Kitchen Designs",
+        "heroDescription": "Transform your cooking space into a chef's paradise with 100% BWP plywood modular kitchens."
+      },
+      {
+        "id": "wardrobes",
+        "title": "Wardrobes",
+        "image": "https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&q=80&w=1200",
+        "description": "Custom-built storage solutions that blend seamlessly with your room's decor.",
+        "href": "/offering/wardrobes",
+        "detailedDescription": "Our custom wardrobe solutions are designed around your lifestyle. Whether you need a walk-in closet, a sliding-door wardrobe, or a compact hinged design, we engineer every inch for maximum storage. Featuring adjustable shelving, built-in drawers, dedicated shoe racks, sari/saree pull-outs, and integrated lighting — all built using premium BWP plywood and soft-close German hardware.",
+        "features": "Walk-In & Sliding Door Options,Internal LED Lighting,Sari/Saree Pull-Out Trays,Soft-Close Hinges & Drawers,Mirror Integration,Shoe Rack Modules,Loft & Corner Solutions,10-Year Warranty",
+        "galleryImages": "https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&q=80&w=1200,https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&q=80&w=1000",
+        "faqs": "What types of wardrobes do you offer?|We design hinged-door sliding-door and walk-in wardrobes customized to your space and preferences.,Can I integrate a dressing table into my wardrobe?|Absolutely. We design integrated vanity units with built-in mirrors lighting and drawers.,What finishes are available?|We offer laminate veneer PU-coated high-gloss acrylic and glass finishes.,How long does wardrobe installation take?|Standard wardrobe installation takes 20-30 days from design approval.",
+        "heroTitle": "Custom Luxury Wardrobes",
+        "heroDescription": "Bespoke storage solutions from walk-in closets to sliding wardrobes built with premium finishes."
+      },
+      {
+        "id": "living-room",
+        "title": "Living Room",
+        "image": "/images/livingroom.jpg",
+        "description": "Elegant and functional living room designs perfect for entertaining your family and guests.",
+        "href": "/offering/living-room",
+        "detailedDescription": "Your living room sets the tone for your entire home. Our designers create spaces that balance aesthetics with functionality — featuring custom TV unit walls, sleek console designs, statement false ceilings with ambient lighting, and premium upholstery. Every design is tailored to your family's lifestyle, whether you love hosting or crave a quiet retreat.",
+        "features": "Custom TV Unit & Feature Walls,False Ceiling with Cove Lighting,Premium Sofa & Upholstery Selection,Accent Wall Panelling,Shoe Cabinet & Foyer Design,Bookshelf & Display Units,Smart Home Integration Ready,10-Year Warranty on Modular Units",
+        "galleryImages": "/images/livingroom.jpg,https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&q=80&w=800",
+        "faqs": "Can you design a living room for a small apartment?|Yes. Space optimization is our specialty. We use multi-functional furniture and smart layouts to make compact rooms feel spacious.,Do you handle false ceiling work?|Yes our turnkey service includes false ceiling design fabrication and installation with integrated lighting.,What style options are available?|We design in contemporary minimalist industrial Scandinavian and traditional Indian styles.",
+        "heroTitle": "Breathtaking Living Room Designs",
+        "heroDescription": "Create a space for family and guests that balances modern aesthetics with cozy comfort."
+      },
+      {
+        "id": "bedroom",
+        "title": "Bedroom",
+        "image": "https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&q=80&w=1200",
+        "description": "Cozy, personalized bedroom interiors designed for a restful and peaceful sleep.",
+        "href": "/offering/bedroom",
+        "detailedDescription": "We design bedrooms that are your personal sanctuary. From luxurious upholstered headboards and walk-in wardrobes to ambient profile lighting and elegant side tables — every element is curated for comfort and style. We specialize in master suites, kids' rooms, and guest bedrooms, each crafted to reflect the personality of its occupant.",
+        "features": "Custom Upholstered Headboards,Walk-In Wardrobe Integration,Profile & Ambient Lighting,Study Desk & Bookshelf Combo,Kids Room Themed Designs,Loft Storage Solutions,Blackout Window Treatments,10-Year Warranty",
+        "galleryImages": "https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&q=80&w=1200,https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&q=80&w=800",
+        "faqs": "Can you design themed kids bedrooms?|Yes we create fun and functional themed rooms — from space-themed bunks to princess castles — all built with child-safe rounded edges and non-toxic finishes.,Do you provide beds or just the surrounding furniture?|We provide end-to-end solutions including the bed frame headboard side tables wardrobe study unit and storage.,What lighting options do you recommend?|We recommend a combination of warm cove lighting for ambiance task lighting for reading and accent strip lighting behind headboards.",
+        "heroTitle": "Personalized Bedroom Sanctuaries",
+        "heroDescription": "Fall in love with sleep in a bedroom designed for ultimate rest and relaxation."
+      },
+      {
+        "id": "bathroom",
+        "title": "Bathroom",
+        "image": "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=1200",
+        "description": "Modern bathroom designs with premium fixtures, anti-skid flooring, and smart storage.",
+        "href": "/offering/bathroom",
+        "detailedDescription": "We elevate bathrooms from purely functional to spa-like sanctuaries. Our bathroom designs incorporate premium sanitary ware from leading brands, anti-skid vitrified tiles, concealed plumbing, smart vanity units with ample storage, and luxurious rain showers. We handle the complete scope — from waterproofing and tiling to fixture installation and vanity fabrication.",
+        "features": "Premium Sanitary Ware,Anti-Skid Vitrified Tiles,Rain Shower & Mixer Systems,Custom Vanity Units,Concealed Plumbing,Waterproofing & Tiling,Heated Towel Rails (Optional),LED Mirror Cabinets",
+        "galleryImages": "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=1200,https://images.unsplash.com/photo-1616137422495-1e9e46e2aa77?auto=format&fit=crop&q=80&w=1000",
+        "faqs": "Do you handle waterproofing?|Yes. Professional waterproofing is included in all our bathroom renovation packages.,Which brands do you use for sanitary ware?|We work with premium brands like Kohler Grohe Jaquar and Duravit.,Can you redesign a small bathroom?|Absolutely. We specialize in space-saving wall-mounted vanities corner fixtures and glass shower partitions that open up small bathrooms.",
+        "heroTitle": "Luxury Spa-Style Bathrooms",
+        "heroDescription": "Modernize your bathroom with anti-skid flooring and premium international fixtures."
+      },
+      {
+        "id": "full-home",
+        "title": "Full Home Interiors",
+        "image": "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=1200",
+        "description": "End-to-end design and turnkey execution for your entire home by expert architects.",
+        "href": "/offering/full-home",
+        "detailedDescription": "Our flagship service. We take complete ownership of your home's transformation — from initial conceptualization and 3D walkthroughs, through civil work, electrical, plumbing, false ceilings, painting, and the final installation of every piece of custom-built modular furniture. A dedicated project manager ensures your home is delivered on time and within budget, with 144+ quality checks along the way.",
+        "features": "Dedicated Project Manager,3D Walkthrough Before Execution,Civil & Structural Work,Electrical & Plumbing Overhaul,False Ceiling & Painting,All Modular Furniture,144+ Quality Checks,45-Day Delivery Guarantee",
+        "galleryImages": "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=1200,https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&q=80&w=800",
+        "faqs": "What is included in full home interiors?|Everything — design consultation 3D visualization civil work electrical plumbing false ceilings painting modular kitchen wardrobes TV units shoe cabinets crockery units and final handover.,How long does a full home project take?|Depending on the BHK size it takes 45-90 days from design finalization to handover.,Do I get a dedicated project manager?|Yes. Every full home project is assigned a dedicated project manager who coordinates all trades and keeps you updated weekly.,What is the starting cost?|Full home interiors start from approximately ₹3.5 Lakhs for a 1 BHK. The final cost depends on materials finishes and scope.",
+        "heroTitle": "Full Home Masterpiece Designs",
+        "heroDescription": "End-to-end turnkey interior solutions for your entire villa or apartment in Chennai."
+      }
+    ]
+  },
+  "projects": {
+    "title": "Award-Winning Home Interiors Delivered in Chennai",
+    "description": "Explore our portfolio of premium modular kitchens, luxurious bedrooms, and full-home renovations across Tamil Nadu.",
+    "items": [
+      {
+        "id": "modern-4-bhk-penthouse",
+        "title": "Modern 4 BHK Penthouse",
+        "location": "Anna Nagar, Chennai",
+        "image": "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=800",
+        "price": "₹35.0 Lakhs",
+        "type": "Full Home",
+        "sqft": "3,200",
+        "timeline": "90 Days",
+        "summary": "A contemporary luxury home with high-end finishes and smart features.",
+        "detailedDescription": "This sprawling 4 BHK penthouse in Anna Nagar was designed for a family that loves to entertain. The design features an open-concept living and dining area, a sweeping modular kitchen with a grand island, and private, luxurious bedrooms. Our focus was on integrating smart home technology seamlessly with elegant, modern aesthetics.",
+        "challenge": "The main challenge was to maximize natural light while ensuring privacy in a densely populated urban area, and seamlessly integrating extensive smart-home wiring without compromising the sleek design.",
+        "solution": "We utilized custom-built, floor-to-ceiling glass partitions, strategically placed reflective surfaces, and incorporated a centralized smart hub hidden within bespoke cabinetry.",
+        "galleryImages": "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=800,https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&q=80&w=800"
+      },
+      {
+        "id": "scandinavian-kitchen-adyar",
+        "title": "Scandinavian Kitchen",
+        "location": "Adyar, Chennai",
+        "image": "https://images.unsplash.com/photo-1556911223-e4520288df80?auto=format&fit=crop&q=80&w=800",
+        "price": "₹6.5 Lakhs",
+        "type": "Modular Kitchen",
+        "sqft": "250",
+        "timeline": "35 Days",
+        "summary": "A bright, airy kitchen with white oak finishes and premium appliances.",
+        "detailedDescription": "Designed for a baking enthusiast, this Scandinavian-inspired kitchen maximizes efficiency and light. It features extensive built-in storage, a dedicated baking station, white oak veneer finishes, and premium German hardware for longevity.",
+        "challenge": "The kitchen footprint was relatively small, but the client required significant storage and counter space for bulky baking equipment.",
+        "solution": "We employed tall pantry units with pull-out mechanisms to maximize vertical space and installed a deep, seamless quartz countertop that doubled as a prep area and a casual breakfast bar.",
+        "galleryImages": "https://images.unsplash.com/photo-1556911223-e4520288df80?auto=format&fit=crop&q=80&w=800,https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&q=80&w=800"
+      },
+      {
+        "id": "elegant-3-bhk-omr",
+        "title": "Elegant 3 BHK Flat",
+        "location": "OMR, Chennai",
+        "image": "/images/elagant-3bhk.jpg",
+        "price": "₹18.5 Lakhs",
+        "type": "Full Home",
+        "sqft": "1,800",
+        "timeline": "60 Days",
+        "summary": "Minimalist design with efficient space utilization and modular kitchen.",
+        "detailedDescription": "Located in the bustling IT corridor of OMR, this 3 BHK flat was designed as a tranquil retreat for a young IT professional family. The design ethos was strict minimalism, utilizing a neutral color palette, concealed storage, and multi-functional furniture.",
+        "challenge": "Creating distinct functional zones (work, relax, dine) within an open-plan layout without making the space feel cluttered or claustrophobic.",
+        "solution": "We used subtle change in flooring materials and strategic ceiling lighting to demarcate zones, and custom-designed modular furniture that folds away when not in use.",
+        "galleryImages": "/images/elagant-3bhk.jpg,https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&q=80&w=1000"
+      },
+      {
+        "id": "royal-master-bedroom",
+        "title": "Royal Master Bedroom",
+        "location": "Besant Nagar, Chennai",
+        "image": "https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&q=80&w=800",
+        "price": "₹4.5 Lakhs",
+        "type": "Bedroom",
+        "sqft": "450",
+        "timeline": "25 Days",
+        "summary": "Luxurious master suite with custom walk-in wardrobe and ambient lighting.",
+        "detailedDescription": "This master bedroom in Besant Nagar was transformed into a luxury suite reminiscent of a 5-star hotel. It features a plush upholstered headboard, a walk-in wardrobe with tinted glass doors, and a reading nook overlooking the coast.",
+        "challenge": "Integrating a spacious walk-in wardrobe without significantly reducing the overall volume of the bedroom.",
+        "solution": "We used fluted glass partitions and profile lighting to create the wardrobe space, which provided separation while still allowing light to penetrate, maintaining the room's airy feel.",
+        "galleryImages": "https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&q=80&w=800,https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&q=80&w=1000"
+      },
+      {
+        "id": "contemporary-villa-ecr",
+        "title": "Contemporary Villa",
+        "location": "ECR, Chennai",
+        "image": "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&q=80&w=800",
+        "price": "₹45.0 Lakhs",
+        "type": "Full Home",
+        "sqft": "4,500",
+        "timeline": "120 Days",
+        "summary": "Spacious beachside villa with a focus on natural light and ventilation.",
+        "detailedDescription": "A magnificent villa on the East Coast Road, designed to embrace its coastal setting. We employed a vibrant, breezier palette with extensive use of natural teak wood, cane accents, and massive sliding glass doors that merge the indoors with the outdoors.",
+        "challenge": "Protecting the interior finishes from the corrosive coastal air and high humidity while maintaining a luxurious aesthetic.",
+        "solution": "We specified marine-grade BWP plywood for all woodwork, used specialized PU coatings, and selected rust-resistant SS304 hardware for all fixtures.",
+        "galleryImages": "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&q=80&w=800,https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&q=80&w=800"
+      },
+      {
+        "id": "island-concept-kitchen",
+        "title": "Island Concept Kitchen",
+        "location": "T. Nagar, Chennai",
+        "image": "https://images.unsplash.com/photo-1556912173-3bb406ef7e77?auto=format&fit=crop&q=80&w=800",
+        "price": "₹8.2 Lakhs",
+        "type": "Modular Kitchen",
+        "sqft": "320",
+        "timeline": "40 Days",
+        "summary": "Italian-style island kitchen with built-in wine cellar and stone tops.",
+        "detailedDescription": "The heart of a sprawling T. Nagar heritage home, this kitchen was completely modernized. It boasts a massive central island adorned with Italian marble, hidden integrated appliances, and a seamless blend of traditional layout with modern ergonomics.",
+        "challenge": "Updating the kitchen to modern standards without destroying the architectural integrity of the heritage home.",
+        "solution": "We preserved the original window frames and arches but installed state-of-the-art concealed modular units behind traditional-looking shaker doors.",
+        "galleryImages": "https://images.unsplash.com/photo-1556912173-3bb406ef7e77?auto=format&fit=crop&q=80&w=800,https://images.unsplash.com/photo-1556911223-e4520288df80?auto=format&fit=crop&q=80&w=800"
+      },
+      {
+        "id": "industrial-living-loft",
+        "title": "Industrial Living Loft",
+        "location": "Velachery, Chennai",
+        "image": "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&q=80&w=800",
+        "price": "₹12.0 Lakhs",
+        "type": "Living Room",
+        "sqft": "800",
+        "timeline": "45 Days",
+        "summary": "Exposed brick walls meets modern luxury in this open-concept living area.",
+        "detailedDescription": "A bold, industrial-chic design for a young creative couple. We stripped back the plaster to reveal the original brickwork, installed matte black track lighting, and designed massive, raw-wood shelving units fixed to exposed steel beams.",
+        "challenge": "Balancing the cold, raw industrial elements with enough warmth and comfort to make it a livable relaxing space.",
+        "solution": "We introduced rich textures like distressed leather sofas, plush woolen rugs, and warm amber accent lighting to soften the harsh edges.",
+        "galleryImages": "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&q=80&w=800,https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&q=80&w=1200"
+      },
+      {
+        "id": "art-deco-apartment",
+        "title": "Art Deco Apartment",
+        "location": "Mylapore, Chennai",
+        "image": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&q=80&w=800",
+        "price": "₹22.0 Lakhs",
+        "type": "Full Home",
+        "sqft": "2,100",
+        "timeline": "75 Days",
+        "summary": "A blend of traditional motifs and modern modular efficiency.",
+        "detailedDescription": "A sophisticated apartment in Mylapore that beautifully marries the iconic Art Deco style with contemporary living needs. It features geometric brass inlays, rich velvet upholstery, and custom-designed modular units that match the aesthetic.",
+        "challenge": "Sourcing and fabricating unique, period-accurate geometric hardware and trims within the city.",
+        "solution": "We partnered with specialized local artisans to custom-cast the brass handles and inlays, ensuring precise matching with the overall design theme.",
+        "galleryImages": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&q=80&w=800,https://images.unsplash.com/photo-1616137422495-1e9e46e2aa77?auto=format&fit=crop&q=80&w=1000"
+      }
+    ]
+  },
+  "stats": [
+    { "label": "Homes Delivered", "value": "20,000+" },
+    { "label": "Expert Designers", "value": "500+" },
+    { "label": "Warranty Period", "value": "10Y" },
+    { "label": "Delivery Promise", "value": "45D" }
+  ],
+  "testimonials": {
+    "title": "What Our Clients Say",
+    "description": "Real stories from real homeowners across Tamil Nadu.",
+    "items": [
+      {
+        "name": "Karthik Subramanian",
+        "location": "Adyar, Chennai",
+        "text": "ACE INTERIORS transformed our 3BHK into a masterpiece. The design process was smooth, and the quality of materials is top-notch. The local Chennai team understood exactly what we wanted.",
+        "image": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=150&h=150&q=80"
+      },
+      {
+        "name": "Lakshmi Narayanan",
+        "location": "Thoraipakkam, Chennai",
+        "text": "The 45-day delivery promise is real! Our modular kitchen was installed exactly on time. The designers really understood our space constraints and daily cooking needs.",
+        "image": "https://images.unsplash.com/photo-1531123897727-8f129e1eb4ce?auto=format&fit=crop&w=150&h=150&q=80"
+      },
+      {
+        "name": "Priya Rajasekar",
+        "location": "Anna Nagar, Chennai",
+        "text": "Professional, creative, and transparent. ACE INTERIORS is the best choice for anyone looking for premium home interiors in Tamil Nadu. The finish quality is just brilliant.",
+        "image": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&h=150&q=80"
+      }
+    ]
+  },
+  "pricing": {
+    "title": "Interior Design Cost in Chennai – 2026 Breakdown",
+    "description": "Get a clear understanding of the estimated costs for your home interiors based on your BHK and design preference.",
+    "items": [
+      {
+        "bhk": "1 BHK",
+        "essential": "₹3.5L - ₹5.5L",
+        "premium": "₹5.5L - ₹8.5L",
+        "luxury": "₹8.5L+"
+      },
+      {
+        "bhk": "2 BHK",
+        "essential": "₹6.5L - ₹9.5L",
+        "premium": "₹9.5L - ₹14.5L",
+        "luxury": "₹14.5L+"
+      },
+      {
+        "bhk": "3 BHK",
+        "essential": "₹9.5L - ₹13.5L",
+        "premium": "₹13.5L - ₹20.5L",
+        "luxury": "₹20.5L+"
+      },
+      {
+        "bhk": "4 BHK / Villa",
+        "essential": "₹14.5L - ₹18.5L",
+        "premium": "₹18.5L - ₹28.5L",
+        "luxury": "₹28.5L+"
+      }
+    ]
+  },
+  "faqs": {
+    "title": "FAQs About Home Interior Design in Chennai",
+    "description": "Everything you need to know about transforming your home with ACE INTERIORS, the best interior designers in Chennai.",
+    "items": [
+      {
+        "question": "How much does interior design cost in Chennai?",
+        "answer": "The cost of interior design in Chennai typically ranges from ₹3.5 Lakhs for a basic 1BHK to ₹25 Lakhs+ for a luxury 3BHK. The final cost depends on the materials, finishes, and complexity of the design."
+      },
+      {
+        "question": "How long does it take to complete a home interior project?",
+        "answer": "At ACE INTERIORS, we offer a 45-day delivery guarantee for modular solutions. For full home interiors, the timeline usually ranges from 60 to 90 days depending on the scope of work."
+      },
+      {
+        "question": "Do you provide a warranty on your interior services?",
+        "answer": "Yes, we provide a 10-year warranty on all our modular products and a 1-year service warranty on other works. We use high-quality BWP materials that are built to last."
+      },
+      {
+        "question": "Can I see your work before booking a consultation?",
+        "answer": "Absolutely! You can visit our Experience Centre in Chennai (Navalur) to see our designs, materials, and finishes in person. You can also view our online portfolio."
+      },
+      {
+        "question": "What is included in your end-to-end interior services?",
+        "answer": "Our services include design consultation, 3D visualizations, material procurement, civil work, electrical, plumbing, modular furniture, custom furniture, and final installation."
+      }
+    ]
+  },
+  "blogs": {
+    "title": "Latest from the Magazine",
+    "description": "Stay updated with the latest design trends, expert advice, and interior inspiration from ACE Interiors.",
+    "items": [
+      {
+        "id": "1",
+        "title": "10 Tips for a Small Kitchen Makeover",
+        "summary": "Maximize your space with these clever design hacks and storage solutions.",
+        "author": "Sunita Sharma",
+        "date": "March 15, 2026",
+        "readTime": "5 min read",
+        "image": "https://images.unsplash.com/photo-1556911223-e4520288df80?auto=format&fit=crop&q=80&w=800",
+        "category": "Kitchen",
+        "content": "Full content of the blog post goes here. You can use markdown or plain text."
+      },
+      {
+        "id": "2",
+        "title": "The Rise of Sustainable Interior Design",
+        "summary": "How eco-friendly materials are shaping the future of home interiors.",
+        "author": "Amit Verma",
+        "date": "March 10, 2026",
+        "readTime": "8 min read",
+        "image": "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=800",
+        "category": "Trends",
+        "content": "Full content of the blog post goes here."
+      }
+    ]
+  }
+}
