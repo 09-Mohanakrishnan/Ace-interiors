@@ -18,12 +18,17 @@ const allowedOrigins = [
   'https://ace-interiors.com'
 ];
 
+// Helper to check if origin is a Hostinger preview site
+const isHostingerPreview = (origin) => origin && origin.includes('.hostingersite.com');
+
+
 app.use(cors({
   origin: (origin, callback) => {
     // allow requests with no origin (like mobile apps or curl requests)
     if (!origin) return callback(null, true);
     
     const isAllowed = allowedOrigins.includes(origin) || 
+                     isHostingerPreview(origin) ||
                      origin.startsWith('http://localhost:') || 
                      origin.startsWith('http://127.0.0.1:');
                      
