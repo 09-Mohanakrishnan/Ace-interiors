@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { Menu, X, Phone, Calendar, MapPin } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Link, useLocation } from 'react-router-dom';
+import logo from '../assets/logo2.png';
+
 
 export default function Navbar({ onConsultationClick }: { onConsultationClick?: () => void }) {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -37,10 +39,11 @@ export default function Navbar({ onConsultationClick }: { onConsultationClick?: 
           <div className="flex items-center">
             <Link to="/" className="flex items-center space-x-2 group">
               <img
-                src="/src/assets/logo2.png"
+                src={logo}
                 alt="ACE Interiors"
                 className={`h-12 w-auto transition-all duration-300 ${(isScrolled || !isHomePage) ? 'brightness-100' : 'brightness-0 invert'}`}
               />
+
             </Link>
           </div>
 
@@ -96,7 +99,7 @@ export default function Navbar({ onConsultationClick }: { onConsultationClick?: 
               className="fixed top-0 right-0 bottom-0 w-[85%] max-w-sm bg-white z-50 md:hidden shadow-2xl flex flex-col"
             >
               <div className="p-6 border-b border-gray-100 flex justify-between items-center bg-gray-50/50">
-                <img src="/src/assets/logo2.png" alt="ACE" className="h-8 w-auto" />
+                <img src={logo} alt="ACE" className="h-8 w-auto" />
                 <button
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="p-2 hover:bg-gray-100 rounded-xl transition-colors"

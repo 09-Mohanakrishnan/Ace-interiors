@@ -1,6 +1,8 @@
 import { motion } from 'motion/react';
 import { MapPin, Phone, Mail, Instagram, Facebook, Twitter, Youtube, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import logo from '../assets/logo2.png';
+
 
 const centres = [
   {
@@ -56,7 +58,7 @@ export default function Footer({ onConsultationClick }: { onConsultationClick?: 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           <div className="space-y-6">
             <div className="flex items-center space-x-2">
-              <img src="/src/assets/logo2.png" alt="ACE Interiors" className="h-10 w-auto" />
+              <img src={logo} alt="ACE Interiors" className="h-10 w-auto" />
             </div>
             <p className="text-gray-400 leading-relaxed">
               Transforming houses into homes with innovative designs and premium quality. The #1 interior design partner in Chennai.
