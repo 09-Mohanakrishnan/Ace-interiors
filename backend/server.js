@@ -37,7 +37,9 @@ const app = express();
 const allowedOrigins = [
   'http://localhost:3000',
   'http://127.0.0.1:3000',
-  'https://ace-interiors.com'
+  'https://ace-interiors.com',
+  'https://aceinterioranddesigns.com',
+  'http://aceinterioranddesigns.com'
 ];
 
 // Helper to check if origin is a Hostinger preview site
