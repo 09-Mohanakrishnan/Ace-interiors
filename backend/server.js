@@ -47,9 +47,14 @@ app.use(express.static(path.join(__dirname, '../frontend/dist')));
 
 
 const PORT = process.env.PORT || 5001;
-const MONGO_URI = process.env.MONGO_URI || 'mongodb+srv://mohanakrishnandevin_db_user:ui7ZOvBZ06OwxKct@cluster0.ism1uek.mongodb.net/?appName=Cluster0';
-const JWT_SECRET = process.env.JWT_SECRET || 'ace_interiors_super_secret_key_2468';
-const NODE_ENV = process.env.NODE_ENV || 'development';
+const MONGO_URI = process.env.MONGO_URI;
+const JWT_SECRET = process.env.JWT_SECRET || 'ace_interiors_prod_secret_88';
+const NODE_ENV = process.env.NODE_ENV || 'production';
+
+if (!MONGO_URI) {
+  console.error('⚠️ WARNING: MONGO_URI is not defined in environment variables!');
+}
+
 
 mongoose.connect(MONGO_URI)
   .then(() => console.log('✅ Connected to MongoDB Production'))
