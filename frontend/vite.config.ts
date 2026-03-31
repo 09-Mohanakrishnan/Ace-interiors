@@ -22,7 +22,7 @@ export default defineConfig(({mode}) => {
       allowedHosts: ['.ngrok-free.dev', 'nonaligned-ray-guardedly.ngrok-free.dev'],
       proxy: {
         '/api': {
-          target: 'http://localhost:5001',
+          target: 'http://127.0.0.1:5001',
           changeOrigin: true,
         },
       },
