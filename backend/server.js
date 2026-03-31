@@ -85,7 +85,16 @@ if (!MONGO_URI) {
 
 mongoose.connect(MONGO_URI)
   .then(() => console.log('✅ Connected to MongoDB Production'))
-  .catch((err) => console.error('❌ MongoDB Connection Error:', err));
+  .catch((err) => {
+    console.error('❌ MongoDB Connection Error:', err.message);
+    // Do not kill the process; allow the server to remain alive for diagnostics
+  });
+
+// START THE SERVER IMMEDIATELY
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`🚀 Server fully active on http://0.0.0.0:${PORT}`);
+  console.log('✨ Production mode is ON');
+});
 
 // Auth Middleware
 const protect = async (req, res, next) => {
@@ -289,6 +298,3 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
 });
 
-app.listen(PORT, '0.0.0.0', () => {
-  console.log(`🚀 Server running on http://0.0.0.0:${PORT}`);
-});
