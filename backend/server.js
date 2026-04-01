@@ -6,6 +6,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
+const multer = require('multer');
 
 // GLOBAL CRASH CATCHERS
 process.on('uncaughtException', (err) => {
@@ -73,6 +74,12 @@ app.use(cookieParser());
 
 // Static Files - Use absolute path from project root
 app.use(express.static(distPath));
+// Serve uploaded files statically
+const uploadsPath = path.join(__dirname, 'uploads');
+if (!fs.existsSync(uploadsPath)) {
+  fs.mkdirSync(uploadsPath, { recursive: true });
+}
+app.use('/uploads', express.static(uploadsPath));
 
 // PATH LOGGER
 app.use((req, res, next) => {
@@ -127,6 +134,27 @@ app.post('/api/auth/logout', (req, res) => {
 
 app.get('/api/auth/me', protect, (req, res) => {
   res.json({ status: 'authenticated' });
+});
+
+// Configure Multer for local storage
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, path.join(__dirname, 'uploads'));
+  },
+  filename: function (req, file, cb) {
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+    cb(null, 'img-' + uniqueSuffix + path.extname(file.originalname));
+  }
+});
+const upload = multer({ storage: storage });
+
+app.post('/api/upload', protect, upload.single('image'), (req, res) => {
+  if (!req.file) {
+    return res.status(400).json({ error: 'No file uploaded' });
+  }
+  // Hostinger/Local path: the file is served via the /uploads route configured above
+  const fileUrl = `/uploads/${req.file.filename}`;
+  res.json({ url: fileUrl });
 });
 
 // Content Aggregate function

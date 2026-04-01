@@ -12,6 +12,7 @@ import {
   AlertCircle,
   Settings
 } from 'lucide-react';
+import ImageUpload from './ImageUpload';
 
 interface EditorProps {
   sectionKey: keyof SiteContent;
@@ -141,6 +142,16 @@ export default function SectionEditor({ sectionKey }: EditorProps) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {Object.entries(localContent).map(([key, value]) => {
               if (typeof value === 'string') {
+                const isImageField = ['image', 'backgroundimage', 'icon', 'avatar'].some(keyword => key.toLowerCase().includes(keyword.toLowerCase()));
+
+                if (isImageField) {
+                  return (
+                    <div key={key} className="col-span-1 md:col-span-2">
+                       <ImageUpload label={key} value={value} onChange={(url) => updateField(key, url)} />
+                    </div>
+                  );
+                }
+
                 return (
                   <div key={key} className="space-y-2">
                     <label className="text-sm font-bold text-gray-700 capitalize">{key.replace(/([A-Z])/g, ' $1')}</label>
@@ -190,30 +201,46 @@ export default function SectionEditor({ sectionKey }: EditorProps) {
                         <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-4">
                             {Object.entries(item).map(([key, value]) => (
                                 <div key={key} className="space-y-1">
-                                    <label className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">{key}</label>
-                                    {['description', 'text', 'answer', 'detailedDescription', 'challenge', 'solution', 'features', 'faqs', 'galleryImages', 'heroTitle', 'heroDescription', 'content', 'summary'].includes(key) ? (
-                                        <textarea 
-                                            rows={4}
-                                            className="w-full px-4 py-2 rounded-lg border border-gray-100 focus:ring-1 focus:ring-brand-orange outline-none transition-all text-sm resize-y"
-                                            value={value as string}
-                                            onChange={(e) => {
+                                    {(() => {
+                                        const isImageField = ['image', 'backgroundimage', 'icon', 'avatar'].some(keyword => key.toLowerCase().includes(keyword.toLowerCase()));
+                                        
+                                        if (isImageField) {
+                                            return <ImageUpload label={key} value={value as string} onChange={(url) => {
                                                 const newItems = [...localContent.items];
-                                                newItems[index] = { ...newItems[index], [key]: e.target.value };
+                                                newItems[index] = { ...newItems[index], [key]: url };
                                                 setLocalContent({ ...localContent, items: newItems });
-                                            }}
-                                        />
-                                    ) : (
-                                        <input 
-                                            type="text"
-                                            className="w-full px-4 py-2 rounded-lg border border-gray-100 focus:ring-1 focus:ring-brand-orange outline-none transition-all text-sm"
-                                            value={value as string}
-                                            onChange={(e) => {
-                                                const newItems = [...localContent.items];
-                                                newItems[index] = { ...newItems[index], [key]: e.target.value };
-                                                setLocalContent({ ...localContent, items: newItems });
-                                            }}
-                                        />
-                                    )}
+                                            }} />;
+                                        }
+
+                                        return (
+                                          <>
+                                            <label className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">{key}</label>
+                                            {['description', 'text', 'answer', 'detailedDescription', 'challenge', 'solution', 'features', 'faqs', 'galleryImages', 'heroTitle', 'heroDescription', 'content', 'summary'].includes(key) ? (
+                                                <textarea 
+                                                    rows={4}
+                                                    className="w-full px-4 py-2 rounded-lg border border-gray-100 focus:ring-1 focus:ring-brand-orange outline-none transition-all text-sm resize-y"
+                                                    value={value as string}
+                                                    onChange={(e) => {
+                                                        const newItems = [...localContent.items];
+                                                        newItems[index] = { ...newItems[index], [key]: e.target.value };
+                                                        setLocalContent({ ...localContent, items: newItems });
+                                                    }}
+                                                />
+                                            ) : (
+                                                <input 
+                                                    type="text"
+                                                    className="w-full px-4 py-2 rounded-lg border border-gray-100 focus:ring-1 focus:ring-brand-orange outline-none transition-all text-sm"
+                                                    value={value as string}
+                                                    onChange={(e) => {
+                                                        const newItems = [...localContent.items];
+                                                        newItems[index] = { ...newItems[index], [key]: e.target.value };
+                                                        setLocalContent({ ...localContent, items: newItems });
+                                                    }}
+                                                />
+                                            )}
+                                          </>
+                                        );
+                                    })()}
                                 </div>
                             ))}
                         </div>
