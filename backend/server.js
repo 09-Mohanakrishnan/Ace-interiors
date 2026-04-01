@@ -185,19 +185,19 @@ app.put('/api/content', protect, async (req, res) => {
         testimonials: stripIds(data.testimonials)
     };
     await SiteMeta.updateOne({}, cleanMeta, { upsert: true });
-    if (data.offerings?.items) {
+    if (data.offerings && data.offerings.items) {
         for (const item of data.offerings.items) {
             const { _id, ...updateData } = item;
             await Offering.updateOne({ id: item.id }, updateData, { upsert: true });
         }
     }
-    if (data.projects?.items) {
+    if (data.projects && data.projects.items) {
         for (const item of data.projects.items) {
             const { _id, ...updateData } = item;
             await Project.updateOne({ id: item.id }, updateData, { upsert: true });
         }
     }
-    if (data.blogs?.items) {
+    if (data.blogs && data.blogs.items) {
         for (const item of data.blogs.items) {
             const { _id, ...updateData } = item;
             await Blog.updateOne({ id: item.id }, updateData, { upsert: true });
@@ -262,7 +262,7 @@ mongoose.connect(MONGO_URI)
   .then(() => console.log('✅ MongoDB Connected'))
   .catch((err) => console.error('❌ MongoDB Connection Error:', err.message));
 
-app.listen(PORT, '0.0.0.0', () => {
+app.listen(PORT, () => {
   console.log(`🚀 Production Server active on port ${PORT}`);
   console.log(`📡 Serving frontend from: ${distPath}`);
 });
