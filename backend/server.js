@@ -1,8 +1,13 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const dotenv = require('dotenv');
+const jwt = require('jsonwebtoken');
+const cookieParser = require('cookie-parser');
 
-// GLOBAL CRASH CATCHERS - Critical for seeing errors in Hostinger Logs
+// GLOBAL CRASH CATCHERS
 process.on('uncaughtException', (err) => {
   console.error('🔥 UNCAUGHT EXCEPTION:', err.message);
   console.error(err.stack);
@@ -12,28 +17,28 @@ process.on('unhandledRejection', (reason, promise) => {
   console.error('🔥 UNHANDLED REJECTION:', reason);
 });
 
-const mongoose = require('mongoose');
-const cors = require('cors');
-const dotenv = require('dotenv');
-const jwt = require('jsonwebtoken');
-const cookieParser = require('cookie-parser');
-const Admin = require('./models/Admin');
-
 dotenv.config();
 
+// Models
+const Admin = require('./models/Admin');
+const SiteMeta = require('./models/SiteMeta');
+const Offering = require('./models/Offering');
+const Project = require('./models/Project');
+const Blog = require('./models/Blog');
+const Lead = require('./models/Lead');
+
+const app = express();
+
 // STARTUP DIAGNOSTICS
-console.log('📂 Current Working Directory:', process.cwd());
-console.log('📂 __dirname:', __dirname);
-const distPath = path.join(__dirname, '../frontend/dist');
+console.log('📂 Project Root (CWD):', process.cwd());
+const distPath = path.resolve(process.cwd(), 'frontend/dist');
 if (fs.existsSync(distPath)) {
   console.log('✅ Frontend Build directory found at:', distPath);
 } else {
   console.log('❌ Frontend Build directory NOT FOUND at:', distPath);
 }
 
-const app = express();
-
-// Robust CORS for local development & production
+// Robust CORS
 const allowedOrigins = [
   'http://localhost:3000',
   'http://127.0.0.1:3000',
@@ -42,20 +47,15 @@ const allowedOrigins = [
   'http://aceinterioranddesigns.com'
 ];
 
-// Helper to check if origin is a Hostinger preview site
 const isHostingerPreview = (origin) => origin && origin.includes('.hostingersite.com');
-
 
 app.use(cors({
   origin: (origin, callback) => {
-    // allow requests with no origin (like mobile apps or curl requests)
     if (!origin) return callback(null, true);
-    
     const isAllowed = allowedOrigins.includes(origin) || 
                      isHostingerPreview(origin) ||
                      origin.startsWith('http://localhost:') || 
                      origin.startsWith('http://127.0.0.1:');
-                     
     if (isAllowed) {
       callback(null, true);
     } else {
@@ -71,51 +71,26 @@ app.use(cors({
 app.use(express.json({ limit: '50mb' })); 
 app.use(cookieParser());
 
-app.use(express.static(path.join(__dirname, '../frontend/dist')));
-app.use(cookieParser());
+// Static Files - Use absolute path from project root
+app.use(express.static(distPath));
 
-// PATH LOGGER: Critical for diagnosing Hostinger proxy issues
+// PATH LOGGER
 app.use((req, res, next) => {
   console.log(`🌐 [${new Date().toISOString()}] ${req.method} ${req.originalUrl}`);
   next();
 });
 
-// HEALTH CHECK: Verify the backend is reachable via proxy
+// HEALTH CHECK
 app.get('/health', (req, res) => {
-  res.json({ status: 'OK', uptime: process.uptime(), time: new Date().toISOString() });
-});
-
-
-const PORT = process.env.PORT || 5001;
-const MONGO_URI = process.env.MONGO_URI;
-const JWT_SECRET = process.env.JWT_SECRET || 'ace_interiors_prod_secret_88';
-const NODE_ENV = process.env.NODE_ENV || 'production';
-
-if (!MONGO_URI) {
-  console.error('⚠️ WARNING: MONGO_URI is not defined in environment variables!');
-}
-
-
-mongoose.connect(MONGO_URI)
-  .then(() => console.log('✅ Connected to MongoDB Production'))
-  .catch((err) => {
-    console.error('❌ MongoDB Connection Error:', err.message);
-    // Do not kill the process; allow the server to remain alive for diagnostics
-  });
-
-// START THE SERVER IMMEDIATELY
-app.listen(PORT, '0.0.0.0', () => {
-  console.log(`🚀 Server fully active on http://0.0.0.0:${PORT}`);
-  console.log('✨ Production mode is ON');
+  res.json({ status: 'OK', uptime: process.uptime(), serverTime: new Date().toISOString() });
 });
 
 // Auth Middleware
 const protect = async (req, res, next) => {
   const token = req.cookies.token;
   if (!token) return res.status(401).json({ error: 'Not authorized' });
-
   try {
-    const decoded = jwt.verify(token, JWT_SECRET);
+    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'ace_interiors_prod_secret_88');
     req.adminId = decoded.id;
     next();
   } catch (error) {
@@ -123,7 +98,7 @@ const protect = async (req, res, next) => {
   }
 };
 
-// --- AUTH ROUTES ---
+// --- API ROUTES ---
 
 app.post('/api/auth/login', async (req, res) => {
   const { username, password } = req.body;
@@ -132,16 +107,13 @@ app.post('/api/auth/login', async (req, res) => {
     if (!admin || !(await admin.comparePassword(password))) {
       return res.status(401).json({ error: 'Invalid credentials' });
     }
-
-    const token = jwt.sign({ id: admin._id }, JWT_SECRET, { expiresIn: '24h' });
-    
+    const token = jwt.sign({ id: admin._id }, process.env.JWT_SECRET || 'ace_interiors_prod_secret_88', { expiresIn: '24h' });
     res.cookie('token', token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'lax',
-      maxAge: 24 * 60 * 60 * 1000 // 24 hours
+      maxAge: 24 * 60 * 60 * 1000
     });
-
     res.json({ message: 'Logged in successfully' });
   } catch (error) {
     res.status(500).json({ error: 'Server error' });
@@ -157,67 +129,41 @@ app.get('/api/auth/me', protect, (req, res) => {
   res.json({ status: 'authenticated' });
 });
 
-// Utility to aggregate all data for the frontend
+// Content Aggregate function
 const getFullContent = async () => {
     const meta = await SiteMeta.findOne();
     const offeringsItems = await Offering.find();
     const projectsItems = await Project.find();
     const blogsItems = await Blog.find();
-
     if (!meta) return null;
-
     return {
         _id: meta._id,
         hero: meta.hero,
         stats: meta.stats,
         pricing: meta.pricing,
         faqs: meta.faqs,
-        offerings: {
-            title: meta.offerings_meta.title,
-            description: meta.offerings_meta.description,
-            items: offeringsItems
-        },
-        projects: {
-            title: meta.projects_meta.title,
-            description: meta.projects_meta.description,
-            items: projectsItems
-        },
-        blogs: {
-            title: meta.blogs_meta.title,
-            description: meta.blogs_meta.description,
-            items: blogsItems
-        },
+        offerings: { title: meta.offerings_meta.title, description: meta.offerings_meta.description, items: offeringsItems },
+        projects: { title: meta.projects_meta.title, description: meta.projects_meta.description, items: projectsItems },
+        blogs: { title: meta.blogs_meta.title, description: meta.blogs_meta.description, items: blogsItems },
         testimonials: meta.testimonials
     };
 };
 
-const SiteMeta = require('./models/SiteMeta');
-const Offering = require('./models/Offering');
-const Project = require('./models/Project');
-const Blog = require('./models/Blog');
-const Lead = require('./models/Lead');
-
-// GET Full Site Content (Aggregated)
 app.get('/api/content', async (req, res) => {
   try {
     const content = await getFullContent();
-    if (!content) {
-      return res.status(404).json({ error: 'No content found. Please seed the database.' });
-    }
+    if (!content) return res.status(404).json({ error: 'No content found' });
     res.json(content);
   } catch (error) {
-    console.error(error);
     res.status(500).json({ error: 'Failed to fetch content' });
   }
 });
 
-// UPDATE Content (Distributed back to collections) - PROTECTED
 const stripIds = (obj) => {
     if (!obj || typeof obj !== 'object') return obj;
     if (Array.isArray(obj)) return obj.map(stripIds);
     const newObj = {};
     for (const key in obj) {
-        // Explicitly skip internal fields and empty _id fields
         if (key !== '_id' && key !== '__v') {
             newObj[key] = stripIds(obj[key]);
         }
@@ -228,9 +174,6 @@ const stripIds = (obj) => {
 app.put('/api/content', protect, async (req, res) => {
   try {
     const data = req.body;
-    console.log('🔄 Sanitizing content update...');
-    
-    // 1. Update SiteMeta
     const cleanMeta = {
         hero: stripIds(data.hero),
         stats: stripIds(data.stats),
@@ -241,73 +184,86 @@ app.put('/api/content', protect, async (req, res) => {
         projects_meta: { title: data.projects.title, description: data.projects.description },
         testimonials: stripIds(data.testimonials)
     };
-    
     await SiteMeta.updateOne({}, cleanMeta, { upsert: true });
-
-    // 2. Update Offerings (Batch sync)
-    if (data.offerings && data.offerings.items) {
+    if (data.offerings?.items) {
         for (const item of data.offerings.items) {
             const { _id, ...updateData } = item;
             await Offering.updateOne({ id: item.id }, updateData, { upsert: true });
         }
     }
-
-    // 3. Update Projects
-    if (data.projects && data.projects.items) {
+    if (data.projects?.items) {
         for (const item of data.projects.items) {
             const { _id, ...updateData } = item;
             await Project.updateOne({ id: item.id }, updateData, { upsert: true });
         }
     }
-
-    // 4. Update Blogs
-    if (data.blogs && data.blogs.items) {
+    if (data.blogs?.items) {
         for (const item of data.blogs.items) {
             const { _id, ...updateData } = item;
             await Blog.updateOne({ id: item.id }, updateData, { upsert: true });
         }
     }
-
     const updated = await getFullContent();
     res.json(updated);
   } catch (error) {
-    console.error(error);
     res.status(500).json({ error: 'Failed to update content' });
   }
 });
 
-// SUBMIT Lead (Public)
 app.post('/api/leads', async (req, res) => {
     try {
         const lead = new Lead(req.body);
         await lead.save();
-        res.status(201).json({ message: 'Lead saved successfully' });
+        res.status(201).json({ message: 'Lead saved' });
     } catch (error) {
-        res.status(500).json({ error: 'Failed to save lead' });
+        res.status(500).json({ error: 'Failed' });
     }
 });
 
-// MANAGE Leads (Protected)
 app.get('/api/leads', protect, async (req, res) => {
     try {
         const leads = await Lead.find().sort({ createdAt: -1 });
         res.json(leads);
     } catch (error) {
-        res.status(500).json({ error: 'Failed to fetch leads' });
+        res.status(500).json({ error: 'Failed' });
     }
 });
 
 app.delete('/api/leads/:id', protect, async (req, res) => {
     try {
         await Lead.findByIdAndDelete(req.params.id);
-        res.json({ message: 'Lead deleted' });
+        res.json({ message: 'Deleted' });
     } catch (error) {
-        res.status(500).json({ error: 'Failed to delete lead' });
+        res.status(500).json({ error: 'Failed' });
     }
 });
 
-// Catch-all route to serve React's index.html for SPA routing
+// --- SPA CATCH-ALL ---
+// This MUST be the last route. It serves index.html for any route not matched above (like /admin)
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
+  const indexPath = path.join(distPath, 'index.html');
+  res.sendFile(indexPath, (err) => {
+    if (err) {
+      console.error('❌ Error sending index.html:', err.message);
+      res.status(404).send('Frontend build not found. Please run npm run build.');
+    }
+  });
+});
+
+// --- SERVER START ---
+const PORT = process.env.PORT || 5001;
+const MONGO_URI = process.env.MONGO_URI;
+
+if (!MONGO_URI) {
+  console.error('⚠️ WARNING: MONGO_URI is missing!');
+}
+
+mongoose.connect(MONGO_URI)
+  .then(() => console.log('✅ MongoDB Connected'))
+  .catch((err) => console.error('❌ MongoDB Connection Error:', err.message));
+
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`🚀 Production Server active on port ${PORT}`);
+  console.log(`📡 Serving frontend from: ${distPath}`);
 });
 
