@@ -1,6 +1,9 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
   
+  # Ensure the server doesn't try to look for index.php or index.html first
+  DirectoryIndex disabled
+  
   # Cache-Busting: Prevent browser from remembering the old WordPress page
   <IfModule mod_headers.c>
     Header set Cache-Control "no-cache, no-store, must-revalidate"
@@ -8,7 +11,13 @@
     Header set Expires 0
   </IfModule>
 
-  # Force all traffic to the Node.js app
+  # Force all traffic (with its path) to our Node.js app
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
   RewriteRule ^(.*)$ http://127.0.0.1:5001/$1 [P,L]
+  
+  # Final Failover: Ensure root itself is proxied
+  RewriteRule ^$ http://127.0.0.1:5001/ [P,L]
 </IfModule>
+
 
