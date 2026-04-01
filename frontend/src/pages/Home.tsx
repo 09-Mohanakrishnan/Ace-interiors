@@ -44,7 +44,7 @@ export default function Home({ onConsultationClick }: HomeProps) {
               </div>
               <div className="space-y-4 pt-8">
                 <div className="rounded-3xl overflow-hidden h-40">
-                  <img src="https://images.unsplash.com/photo-1556911220-e1502da027a?auto=format&fit=crop&q=80&w=600" alt="Interior 3" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+                  <img src="/images/interior3.jpg" alt="Interior 3" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
                 </div>
                 <div className="rounded-3xl overflow-hidden h-56">
                   <img src="https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&q=80&w=600" alt="Interior 4" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />

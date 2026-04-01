@@ -1,13 +1,25 @@
 {
   "hero": {
-    "title": ["Top Interior Designers in chennai", "ACE INTERIORS"],
+    "title": [
+      "Top Interior Designers in chennai",
+      "ACE INTERIORS"
+    ],
     "subtitle": "Transform your living space with the best interior decorators in Chennai. We offer premium modular kitchens, luxury wardrobes, and full home interiors with a 10-year warranty.",
     "backgroundImage": "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=2000",
     "trustBadge": "Chennai's Most Trusted Interior Brand",
     "stats": [
-      { "label": "10 Year Warranty", "value": "10Y" },
-      { "label": "45 Day Delivery", "value": "45D" },
-      { "label": "20,000+ Homes", "value": "20K" }
+      {
+        "label": "10 Year Warranty",
+        "value": "10Y"
+      },
+      {
+        "label": "45 Day Delivery",
+        "value": "45D"
+      },
+      {
+        "label": "20,000+ Homes",
+        "value": "20K"
+      }
     ]
   },
   "offerings": {
@@ -221,10 +233,22 @@
     ]
   },
   "stats": [
-    { "label": "Homes Delivered", "value": "20,000+" },
-    { "label": "Expert Designers", "value": "500+" },
-    { "label": "Warranty Period", "value": "10Y" },
-    { "label": "Delivery Promise", "value": "45D" }
+    {
+      "label": "Homes Delivered",
+      "value": "20,000+"
+    },
+    {
+      "label": "Expert Designers",
+      "value": "500+"
+    },
+    {
+      "label": "Warranty Period",
+      "value": "10Y"
+    },
+    {
+      "label": "Delivery Promise",
+      "value": "45D"
+    }
   ],
   "testimonials": {
     "title": "What Our Clients Say",
