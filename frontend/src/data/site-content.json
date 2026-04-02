@@ -13,12 +13,12 @@
         "value": "10Y"
       },
       {
-        "label": "45 Day Delivery",
-        "value": "45D"
+        "label": "30 Day Delivery",
+        "value": "30D"
       },
       {
-        "label": "20,000+ Homes",
-        "value": "20K"
+        "label": "500+ Homes",
+        "value": "500+"
       }
     ]
   },
@@ -235,11 +235,11 @@
   "stats": [
     {
       "label": "Homes Delivered",
-      "value": "20,000+"
+      "value": "500+"
     },
     {
       "label": "Expert Designers",
-      "value": "500+"
+      "value": "50+"
     },
     {
       "label": "Warranty Period",
@@ -247,7 +247,7 @@
     },
     {
       "label": "Delivery Promise",
-      "value": "45D"
+      "value": "30D"
     }
   ],
   "testimonials": {

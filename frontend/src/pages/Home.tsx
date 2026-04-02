@@ -73,7 +73,7 @@ export default function Home({ onConsultationClick }: HomeProps) {
                 <span className="text-brand-orange">in Chennai</span>
               </h2>
               <p className="text-gray-600 text-lg leading-relaxed mb-6">
-                ACE Interiors is Chennai's highest-rated home interior design company, trusted by over 20,000 happy homeowners. We transform houses into dream homes — blending contemporary design with the warmth of South Indian living.
+                ACE Interiors is Chennai's highest-rated home interior design company, trusted by over 500 happy homeowners. We transform houses into dream homes — blending contemporary design with the warmth of South Indian living.
               </p>
               <p className="text-gray-600 leading-relaxed mb-8">
                 From compact apartments in OMR and Velachery to sprawling villas in ECR and Adyar, our experienced designers bring your vision to life with precision, quality materials, and an unwavering commitment to on-time delivery.
@@ -82,8 +82,8 @@ export default function Home({ onConsultationClick }: HomeProps) {
                 {[
                   { icon: Star, label: '4.9/5 Rating', sub: 'Google Reviews' },
                   { icon: Award, label: '10-Year Warranty', sub: 'On all work' },
-                  { icon: Users, label: '20,000+ Homes', sub: 'Delivered in Chennai' },
-                  { icon: Clock, label: '45-Day Delivery', sub: 'Guaranteed' },
+                  { icon: Users, label: '500+ Homes', sub: 'Delivered in Chennai' },
+                  { icon: Clock, label: '30-Days Delivery', sub: 'Guaranteed' },
                 ].map((item, i) => (
                   <div key={i} className="flex items-center space-x-3 bg-gray-50 p-4 rounded-2xl border border-gray-100">
                     <div className="w-10 h-10 bg-orange-50 rounded-xl flex items-center justify-center text-brand-orange flex-shrink-0">
@@ -146,7 +146,7 @@ export default function Home({ onConsultationClick }: HomeProps) {
           >
             {[...Array(2)].map((_, i) => (
               <div key={i} className="flex items-center space-x-8 px-4">
-                {['Award-Winning Home Interiors Delivered in Chennai', '✦', '20,000+ Happy Homeowners', '✦', '10-Year Warranty Guarantee', '✦', 'Delivered in Just 45 Days', '✦'].map((text, j) => (
+                {['Award-Winning Home Interiors Delivered in Chennai', '✦', '500+ Happy Homeowners', '✦', '10-Year Warranty Guarantee', '✦', 'Delivered in Just 30 Days', '✦'].map((text, j) => (
                   <span key={j} className="text-orange-100 font-semibold text-sm uppercase tracking-widest">
                     {text}
                   </span>

@@ -57,9 +57,13 @@ export default function Footer({ onConsultationClick }: { onConsultationClick?: 
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           <div className="space-y-6">
-            <div className="flex items-center space-x-2">
-              <img src={logo} alt="ACE Interiors" className="h-10 w-auto" />
-            </div>
+          <div className="flex items-center space-x-2">
+  <img 
+    src="./images/logo_white_orange.png"
+    alt="ACE Interiors" 
+    className="h-10 w-auto"
+  />
+</div>
             <p className="text-gray-400 leading-relaxed">
               Transforming houses into homes with innovative designs and premium quality. The #1 interior design partner in Chennai.
             </p>
@@ -121,7 +125,7 @@ export default function Footer({ onConsultationClick }: { onConsultationClick?: 
         </div>
 
         <div className="pt-12 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 text-sm text-gray-500">
-          <p>© 2026 ACE INTERIORS. All rights reserved.</p>
+          <p>© 2026 ACE INTERIORS - Powered by Fresh Digi Hub.</p>
           <div className="flex space-x-8">
             <Link to="/privacy" target="_blank" className="hover:text-brand-orange transition-colors">Privacy Policy</Link>
             <Link to="/terms" target="_blank" className="hover:text-brand-orange transition-colors">Terms of Service</Link>

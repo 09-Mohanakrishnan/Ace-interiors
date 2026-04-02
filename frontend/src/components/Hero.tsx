@@ -114,11 +114,11 @@ export default function Hero({ onConsultationClick }: { onConsultationClick?: ()
               </div>
               <div className="flex flex-col items-center sm:items-start">
                 <Clock className="w-6 h-6 text-brand-orange mb-2" />
-                <span className="text-xs font-medium uppercase tracking-wider text-gray-300">45 Day Delivery</span>
+                <span className="text-xs font-medium uppercase tracking-wider text-gray-300">30 Days Delivery</span>
               </div>
               <div className="flex flex-col items-center sm:items-start">
                 <Star className="w-6 h-6 text-brand-orange mb-2" />
-                <span className="text-xs font-medium uppercase tracking-wider text-gray-300">20,000+ Homes</span>
+                <span className="text-xs font-medium uppercase tracking-wider text-gray-300">500+ Homes</span>
               </div>
             </div>
           </motion.div>
