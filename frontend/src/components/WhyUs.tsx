@@ -8,8 +8,8 @@ const reasons = [
     icon: Shield,
   },
   {
-    title: '45-Day Delivery',
-    description: 'Get your home interiors delivered and installed within 45 days, or we pay you rent for every day of delay.',
+    title: '30-Days Delivery',
+    description: 'Get your home interiors delivered and installed within 30 days, or we pay you rent for every day of delay.',
     icon: Clock,
   },
   {
