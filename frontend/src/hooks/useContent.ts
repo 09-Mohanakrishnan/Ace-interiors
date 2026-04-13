@@ -1,68 +1,122 @@
-import { useState, useEffect } from 'react';
-import initialContent from '../data/site-content.json';
+import { useState, useEffect, useCallback } from 'react';
 
-export type SiteContent = typeof initialContent;
+// ============================================================
+// AMEER-PATTERN: No localStorage, no monolithic JSON blob.
+// Each section fetches its own data from the API.
+// This hook is now only used by the Admin panel for editing.
+// ============================================================
 
-const STORAGE_KEY = 'ace_interiors_content';
-// Use VITE_ environment variable for production flexibility
-const API_URL = ''; // Relative path handled by Vite proxy
+const API_URL = '';
+
+export type SiteContent = any;
 
 export function useContent() {
-  const [content, setContent] = useState<SiteContent>(initialContent);
+  const [content, setContent] = useState<SiteContent | null>(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchContent = async () => {
-      try {
-        const response = await fetch(`${API_URL}/api/content`);
-        if (response.ok) {
-          const dbContent = await response.json();
-          setContent(dbContent);
-          // Update cache for offline-only scenarios (optional)
-          localStorage.setItem(STORAGE_KEY, JSON.stringify(dbContent));
-        } else {
-          const savedContent = localStorage.getItem(STORAGE_KEY);
-          if (savedContent) setContent(JSON.parse(savedContent));
+  const fetchAll = useCallback(async () => {
+    try {
+      const [metaRes, offeringsRes, projectsRes, blogsRes] = await Promise.all([
+        fetch(`${API_URL}/api/site-meta`),
+        fetch(`${API_URL}/api/offerings`),
+        fetch(`${API_URL}/api/projects`),
+        fetch(`${API_URL}/api/blogs`),
+      ]);
+
+      const meta = metaRes.ok ? await metaRes.json() : {};
+      const offerings = offeringsRes.ok ? await offeringsRes.json() : [];
+      const projects = projectsRes.ok ? await projectsRes.json() : [];
+      const blogs = blogsRes.ok ? await blogsRes.json() : [];
+
+      setContent({
+        hero: meta.hero || {},
+        stats: meta.stats || [],
+        pricing: meta.pricing || {},
+        faqs: meta.faqs || {},
+        testimonials: meta.testimonials || {},
+        offerings: {
+          title: meta.offerings_meta?.title || '',
+          description: meta.offerings_meta?.description || '',
+          items: offerings
+        },
+        projects: {
+          title: meta.projects_meta?.title || '',
+          description: meta.projects_meta?.description || '',
+          items: projects
+        },
+        blogs: {
+          title: meta.blogs_meta?.title || '',
+          description: meta.blogs_meta?.description || '',
+          items: blogs
         }
-      } catch (e) {
-        console.error('API Fetch failed, using cache/initial', e);
-        const savedContent = localStorage.getItem(STORAGE_KEY);
-        if (savedContent) setContent(JSON.parse(savedContent));
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchContent();
+      });
+    } catch (e) {
+      console.error('Failed to fetch content from API', e);
+    } finally {
+      setLoading(false);
+    }
   }, []);
 
-  const updateContent = async (newContent: SiteContent) => {
-    setContent(newContent);
-    // Sync to Database (Protected)
-    try {
-        const response = await fetch(`${API_URL}/api/content`, {
-            method: 'PUT',
-            credentials: 'include',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(newContent)
-        });
-        
-        if (response.ok) {
-          localStorage.setItem(STORAGE_KEY, JSON.stringify(newContent));
-        } else if (response.status === 401) {
-          alert("Session expired. Please login again.");
-          window.location.href = '/admin/login';
-        }
-    } catch(err) {
-        console.error("Failed to sync to database", err);
+  useEffect(() => {
+    fetchAll();
+  }, [fetchAll]);
+
+  // Individual save functions (Ameer pattern)
+  const saveSiteMeta = async (section: string, data: any) => {
+    const res = await fetch(`${API_URL}/api/site-meta`, {
+      method: 'PUT',
+      credentials: 'include',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ [section]: data })
+    });
+    if (res.status === 401) {
+      alert('Session expired. Please login again.');
+      window.location.href = '/admin/login';
+      return false;
     }
+    if (!res.ok) throw new Error('Failed to save');
+    return true;
   };
 
-  const resetContent = () => {
-    if (window.confirm('Reset all site content to original defaults? This cannot be undone.')) {
-      setContent(initialContent);
-      localStorage.removeItem(STORAGE_KEY);
+  const saveCollectionItem = async (collection: string, item: any, isNew: boolean) => {
+    const url = isNew 
+      ? `${API_URL}/api/${collection}` 
+      : `${API_URL}/api/${collection}/${item._id}`;
+    const res = await fetch(url, {
+      method: isNew ? 'POST' : 'PUT',
+      credentials: 'include',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(item)
+    });
+    if (res.status === 401) {
+      alert('Session expired. Please login again.');
+      window.location.href = '/admin/login';
+      return null;
     }
+    if (!res.ok) throw new Error('Failed to save');
+    return await res.json();
   };
 
-  return { content, updateContent, resetContent, loading };
+  const deleteCollectionItem = async (collection: string, id: string) => {
+    const res = await fetch(`${API_URL}/api/${collection}/${id}`, {
+      method: 'DELETE',
+      credentials: 'include',
+    });
+    if (res.status === 401) {
+      alert('Session expired. Please login again.');
+      window.location.href = '/admin/login';
+      return false;
+    }
+    if (!res.ok) throw new Error('Failed to delete');
+    return true;
+  };
+
+  return { 
+    content, 
+    loading, 
+    refetch: fetchAll,
+    saveSiteMeta, 
+    saveCollectionItem, 
+    deleteCollectionItem 
+  };
 }
