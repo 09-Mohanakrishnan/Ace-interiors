@@ -10,8 +10,21 @@ const API_URL = '';
 
 export type SiteContent = any;
 
+// Safe empty defaults — prevents white-page crash while API loads
+const EMPTY_CONTENT = {
+  hero: { title: [], subtitle: '', backgroundImage: '', trustBadge: '', stats: [] },
+  stats: [],
+  pricing: { title: '', description: '', items: [] },
+  faqs: { title: '', description: '', items: [] },
+  testimonials: { title: '', description: '', items: [] },
+  offerings: { title: '', description: '', items: [] },
+  projects: { title: '', description: '', items: [] },
+  blogs: { title: '', description: '', items: [] },
+};
+
 export function useContent() {
-  const [content, setContent] = useState<SiteContent | null>(null);
+  const [content, setContent] = useState<SiteContent>(EMPTY_CONTENT);
+
   const [loading, setLoading] = useState(true);
 
   const fetchAll = useCallback(async () => {
